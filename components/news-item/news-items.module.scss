@@ -1,0 +1,56 @@
+.container {
+  width: 500px;
+  height: auto;
+  background-color: #212023;
+  padding: 20px;
+  position: relative;
+  border-radius: 20px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .title {
+    margin: 1rem 0 2.3rem 0;
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .score {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+  }
+
+  .readMoreBtn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1fb65e;
+      transition: all 0.2s linear;
+    }
+
+    .arrowIcon {
+      transition: all 0.2s linear;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      a {
+        filter: brightness(1.5);
+      }
+      .arrowIcon {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
