@@ -1,0 +1,14 @@
+.container {
+
+  .newsList {
+    padding: 30px 0;
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    list-style-type: none;
+    color: #fff;
+  }
+}
