@@ -5,6 +5,7 @@ import { ArrowUpDownIcon } from "../components/UI/icons";
 import images from "../public/assets";
 import autoAnimate from "@formkit/auto-animate";
 import styles from "./index.module.scss";
+import Head from "next/head";
 
 export const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -72,6 +73,9 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Hacker News</title>
+      </Head>
       <h1 className={styles.mainTitle}>Hacker News</h1>
       <button
         onClick={toggleSort}
@@ -85,17 +89,19 @@ export default function Home() {
         />
       </button>
       <ul className={styles.newsList} ref={parent}>
-        {sortedNewsItems.map(({ id, time, by, title, score, url, imageSrc }) => (
-          <NewsItem
-            key={id}
-            time={time}
-            by={by}
-            title={title}
-            score={score}
-            url={url}
-            imageSrc={imageSrc}
-          />
-        ))}
+        {sortedNewsItems.map(
+          ({ id, time, by, title, score, url, imageSrc }) => (
+            <NewsItem
+              key={id}
+              time={time}
+              by={by}
+              title={title}
+              score={score}
+              url={url}
+              imageSrc={imageSrc}
+            />
+          )
+        )}
       </ul>
     </div>
   );
