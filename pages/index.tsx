@@ -72,6 +72,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.mainTitle}>Hacker News</h1>
       <button
         onClick={toggleSort}
         className={`${styles.toggleSortBtn} ${pressed ? styles.rotate : ""}`}

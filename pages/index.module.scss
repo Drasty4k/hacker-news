@@ -1,7 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 20px;
+  gap: 20px;
+  color: #fff;
+
+  .mainTitle {
+    text-align: center;
+    font-size: 3rem;
+  }
 
   .toggleSortBtn {
     height: 50px;
@@ -32,7 +39,6 @@
   }
 
   .newsList {
-    padding: 30px 0;
     width: 85%;
     margin: auto;
     display: flex;
@@ -40,6 +46,5 @@
     gap: 20px;
     justify-content: center;
     list-style-type: none;
-    color: #fff;
   }
 }

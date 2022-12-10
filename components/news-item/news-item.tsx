@@ -37,7 +37,7 @@ const NewsItem: React.FC<Props> = ({
         <p className={styles.timestamp}>{date}</p>
       </div>
       <h1 className={styles.title}>{title}</h1>
-      <p className={styles.score}>Score: {score}</p>
+      <p className={styles.score}>Score: <b>{score}</b></p>
       <div className={styles.readMoreBtn}>
         <a href={url} target="_blank" rel="noreferrer">
           Read more
