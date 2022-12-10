@@ -13,9 +13,17 @@
     margin: auto;
     transition: all 0.2s linear;
 
+    .arrowIcon {
+      transition: all 0.2s linear;
+    }
+
     &:hover {
       cursor: pointer;
       filter: brightness(1.5);
+
+      .arrowIcon {
+        transform: scale(1.1);
+      }
     }
   }
 

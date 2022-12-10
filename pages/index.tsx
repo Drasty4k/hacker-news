@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import useSWR from "swr";
 import NewsItem from "../components/news-item/news-item";
 import { ArrowUpDownIcon } from "../components/UI/icons";
+import images from "../public/assets";
+import autoAnimate from "@formkit/auto-animate";
 import styles from "./index.module.scss";
 
 export const fetcher = (url: string) => fetch(url).then((r) => r.json());
@@ -26,6 +28,7 @@ type ResponseData = {
   title: string;
   type: string;
   url: string;
+  imageSrc?: string;
 };
 
 export default function Home() {
@@ -36,18 +39,22 @@ export default function Home() {
   const [newsItems, setNewsItems] = useState<ResponseData[]>([]);
   const [order, setOrder] = useState<"Asceding" | "Descending">("Asceding");
   const [pressed, setPressed] = useState<boolean>(false);
+  const parent = useRef(null);
 
   useEffect(() => {
     if (newsIds?.length! > 0) {
-      newsIds?.map(async (id) => {
+      newsIds?.map(async (id, index) => {
         const newItem = (await fetchNewsItem(id)) as ResponseData;
+        newItem.imageSrc = images[`blob${index + 1}`];
         setNewsItems((prev) => [...prev, newItem]);
       });
     }
+    parent.current && autoAnimate(parent.current);
   }, [newsIds]);
 
   const toggleSort = () => {
     setPressed((prev) => !prev);
+    if (parent.current) autoAnimate(parent.current!);
     setOrder((prev) => (prev === "Asceding" ? "Descending" : "Asceding"));
   };
 
@@ -69,10 +76,15 @@ export default function Home() {
         onClick={toggleSort}
         className={`${styles.toggleSortBtn} ${pressed ? styles.rotate : ""}`}
       >
-        <ArrowUpDownIcon strokeColor="#1fb65e" width={30} height={30} />
+        <ArrowUpDownIcon
+          strokeColor="#1fb65e"
+          width={30}
+          height={30}
+          className={styles.arrowIcon}
+        />
       </button>
-      <ul className={styles.newsList}>
-        {sortedNewsItems.map(({ id, time, by, title, score, url }) => (
+      <ul className={styles.newsList} ref={parent}>
+        {sortedNewsItems.map(({ id, time, by, title, score, url, imageSrc }) => (
           <NewsItem
             key={id}
             time={time}
@@ -80,6 +92,7 @@ export default function Home() {
             title={title}
             score={score}
             url={url}
+            imageSrc={imageSrc}
           />
         ))}
       </ul>
