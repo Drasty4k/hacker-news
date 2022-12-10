@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import useSWR from "swr";
-import NewsItem from "../components/news-item/news-item";
+import NewsItem from "../components/news-item";
 import { ArrowUpDownIcon } from "../components/UI/icons";
 import images from "../public/assets";
 import autoAnimate from "@formkit/auto-animate";

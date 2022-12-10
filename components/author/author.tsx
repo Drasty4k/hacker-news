@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { fetcher } from "../../pages";
 import { InfoIcon } from "../UI/icons";
-import Tooltip from "../UI/tooltip/tooltip";
+import Tooltip from "../UI/tooltip";
 import styles from "./author.module.scss";
 
 type Props = {

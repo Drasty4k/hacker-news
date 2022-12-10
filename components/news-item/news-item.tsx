@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Author from "../author/author";
+import Author from "../author";
 import { ArrowRightIcon } from "../UI/icons";
 import images from "../../public/assets";
-import styles from "./news-items.module.scss";
+import styles from "./news-item.module.scss";
 
 type Props = {
   by: string;
