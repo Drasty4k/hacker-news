@@ -20,7 +20,7 @@ type ResponseData = {
 const Author: React.FC<Props> = ({ name }) => {
   const { data: user, error: userError } = useSWR<ResponseData>(
     `https://hacker-news.firebaseio.com/v0/user/${name}.json`,
-    fetcher
+    { fetcher, revalidateOnFocus: false }
   );
 
   if (userError) {
