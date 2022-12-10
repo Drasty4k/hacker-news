@@ -1,5 +1,7 @@
 import useSWR from "swr";
 import { fetcher } from "../../pages";
+import { InfoIcon } from "../UI/icons";
+import Tooltip from "../UI/tooltip/tooltip";
 import styles from "./author.module.scss";
 
 type Props = {
@@ -33,7 +35,9 @@ const Author: React.FC<Props> = ({ name }) => {
     <div className={styles.container}>
       <p>Author</p>
       <h3>{name}</h3>
-      {/* <p>Karma score: {user.karma}</p> */}
+      <Tooltip content={`Karma score: ${user.karma}`} direction="right">
+        <InfoIcon className={styles.infoIcon} width={25} height={25} />
+      </Tooltip>
     </div>
   );
 };

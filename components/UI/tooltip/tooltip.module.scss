@@ -1,0 +1,82 @@
+$text-color: #fff;
+$background-color: #151417;
+$margin: 40px;
+$arrow-size: 9px;
+
+.tooltipWrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  border-radius: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  color: $text-color;
+  background: $background-color;
+  font-size: 0.9rem;
+  font-family: sans-serif;
+  line-height: 1;
+  z-index: 100;
+  white-space: nowrap;
+
+  &::before {
+    content: " ";
+    left: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-width: $arrow-size;
+    margin-left: calc($arrow-size * -1);
+  }
+}
+
+.top {
+  top: calc($margin * -1);
+
+  &::before {
+    top: 100%;
+    border-top-color: $background-color;
+  }
+}
+
+.right {
+  left: calc(100% + $margin);
+  top: 50%;
+  transform: translateX(0) translateY(-50%);
+
+  &::before {
+    left: calc($arrow-size * -1);
+    top: 50%;
+    transform: translateX(0) translateY(-50%);
+    border-right-color: $background-color;
+  }
+}
+
+.bottom {
+  bottom: calc($margin * -1);
+
+  &::before {
+    bottom: 100%;
+    border-bottom-color: $background-color;
+  }
+}
+
+.left {
+  left: auto;
+  right: calc(100% + $margin);
+  top: 50%;
+  transform: translateX(0) translateY(-50%);
+
+  &::before {
+    left: auto;
+    right: calc($arrow-size * -2);
+    top: 50%;
+    transform: translateX(0) translateY(-50%);
+    border-left-color: $background-color;
+  }
+}

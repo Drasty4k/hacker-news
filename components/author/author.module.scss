@@ -1,6 +1,5 @@
 .container {
   display: flex;
-  align-items: center;
   gap: 10px;
 
   p {
@@ -10,5 +9,16 @@
 
   h3 {
     font-size: 1rem;
+  }
+
+  .infoIcon {
+    position: absolute;
+    top: -2px;
+    transition: transform 0.1s linear;
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
   }
 }
