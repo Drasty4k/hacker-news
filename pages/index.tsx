@@ -45,9 +45,13 @@ export default function Home() {
   useEffect(() => {
     if (newsIds?.length! > 0) {
       newsIds?.map(async (id, index) => {
-        const newItem = (await fetchNewsItem(id)) as ResponseData;
-        newItem.imageSrc = images[`blob${index + 1}`];
-        setNewsItems((prev) => [...prev, newItem]);
+        try {
+          const newItem = (await fetchNewsItem(id)) as ResponseData;
+          newItem.imageSrc = images[`blob${index + 1}`];
+          setNewsItems((prev) => [...prev, newItem]);
+        } catch (e) {
+          console.error("Something went wrong with the news item fetch")
+        }
       });
     }
     parent.current && autoAnimate(parent.current);
@@ -60,10 +64,10 @@ export default function Home() {
   };
 
   if (newsIdsError) {
-    return <p>error</p>;
+    return <p>Something went wrong with the news IDs fetch</p>;
   }
 
-  if (!newsIds) {
+  if (!newsIds && !newsItems.length) {
     return <p>Loading...</p>;
   }
 

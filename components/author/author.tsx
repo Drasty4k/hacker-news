@@ -24,7 +24,7 @@ const Author: React.FC<Props> = ({ name }) => {
   );
 
   if (userError) {
-    return <p>error</p>;
+    return <p>Something went wrong with the user fetching</p>;
   }
 
   if (!user) {
