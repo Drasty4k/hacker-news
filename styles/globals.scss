@@ -11,3 +11,17 @@ body {
   height: 100%;
   background-color: #151417;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1fb65e;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background: #212023;
+}
